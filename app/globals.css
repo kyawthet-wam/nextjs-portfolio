@@ -4,14 +4,13 @@
 
 :root {
   /* --foreground-rgb: 255, 255, 255; */
-background-color: white;
+  background-color: rgb(245, 246, 250);
   /* --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255; */
 }
 
 @media (prefers-color-scheme: system) {
   :root {
-
   }
 }
 
