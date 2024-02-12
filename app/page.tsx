@@ -1,21 +1,24 @@
-import { CheckCheck, Linkedin, Mail, Phone } from "lucide-react";
-import { works } from "./definitions";
+import { projects, works, dover } from "./definitions";
+import { ProjectCard } from "./project_card";
+import { Footer } from "./footer";
+import { WorkTile } from "./work_tile";
+import { SkillBadge } from "./kkill_badge";
+import firebase from "./firebase_config";
+import { getDownloadURL, getStorage, listAll, ref } from "firebase/storage";
+import { Suspense } from "react";
+import { CardSkeleton, ProfileSkeleton } from "./skeleton";
 
 export default function Home() {
   return (
     <div>
       <div className="m-10">
-        <div className="px-1 w-full">
-          <img
-            src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-            alt="profile"
-            className="h-[300px] w-[300px] rounded-full"
-          />
-        </div>
+        <Suspense fallback={<ProfileSkeleton />}>
+          <ProfileImage />
+        </Suspense>
         <div className="relative text-2xl text-black font-bold pt-10">
           About Me
         </div>
-        <div className="relative text-sm text-black font-light pt-2">
+        <div className="relative text-sm text-slate-500 font-semibold pt-2">
           I am Kyaw Thet Wam, Mobile Developer from Mandalay, Myanmar.
         </div>
         <div className="max-w-[80vh] text-justify text-slate-600 text-sm whitespace-normal py-8">
@@ -30,28 +33,15 @@ export default function Home() {
           exceptional user experiences, I am committed to contributing to your
           mobile app projects' success.
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="flex flex-col md:col-span-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="flex flex-col md:col-span-1 lg:col-span-1 gap-12">
             <div className="flex flex-col gap-2">
-              <div className="relative text-md text-black font-bold">
+              <div className="relative text-md text-black font-semibold">
                 Education
               </div>
-              <div className="relative text-slate-600 text-sm">
+              <div className="relative text-slate-500 font-semibold text-sm">
                 B.E. (Hons) in Computer Science<br></br> Myanmar Institute of
                 Information Technology
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <div className="relative text-md text-black font-bold">
-                Experience
-              </div>
-              <div className="relative text-slate-600 text-sm">
-                I have 3+ years of experience in Software Development
-              </div>
-              <div className="pt-10 space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-                {works.map((work) => (
-                  <Work />
-                ))}
               </div>
             </div>
           </div>
@@ -84,75 +74,220 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="flex flex-col gap-2 pt-10">
+            <div className="relative text-md text-black font-bold">
+              Experience
+            </div>
+            <div className="relative text-slate-500 font-semibold text-sm">
+              I have 3+ years of experience in Software Development
+            </div>
+            <div className="pt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-sky-500 before:to-sky-400">
+              {works.toReversed().map((work) => (
+                <WorkTile work={work} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
+      <Suspense fallback={<CardSkeleton />}>
+        <Projects />
+      </Suspense>
       <Footer />
     </div>
   );
 }
 
-export function Work() {
+export async function ProfileImage() {
   return (
-    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-      <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-sky-200 text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-        <CheckCheck color="#0284c7" />
+    <div className="px-1 w-full">
+      <img
+        src={await getDownloadURL(ref(storage, "images/ktw/ktw-4.jpg/"))}
+        alt="profile"
+        className="h-[300px] w-[300px] rounded-full object-cover"
+      />
+    </div>
+  );
+}
+
+export async function Projects() {
+  const projects = await getProjects();
+  return (
+    <div>
+      <div className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-sky-600">
+        Projects
       </div>
-      <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-slate-200 shadow">
-        <div className="flex items-center justify-between space-x-2 mb-1">
-          <div className="font-bold text-xs text-slate-900">Order Placed</div>
-          <time className="font-sans text-xs text-sky-600">
-            Dec 2019 - Feb 2020
-          </time>
-        </div>
-        <div className="text-xs text-slate-500">
-          Pretium lectus quam id leo. Urna et pharetra aliquam
-        </div>
+      <div className="mx-10 my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
       </div>
     </div>
   );
 }
 
-export function Footer() {
-  return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-      <nav>
-        <div className="grid grid-flow-col gap-10">
-          <a
-            className="hover:text-blue-700 tooltip"
-            data-tip="(+95) 09791867084"
-            href="tel:+959791867084"
-          >
-            <Phone size={24} />
-          </a>
-          <a
-            className="hover:text-blue-700 tooltip"
-            data-tip="kyawthetwam@gmail.com"
-            href="mailto:kyawthetwam@gmail.com"
-          >
-            <Mail size={24} />
-          </a>
-          <a
-            className="hover:text-blue-700 tooltip"
-            data-tip="Kyaw Thet Wam"
-            href="https://www.linkedin.com/in/kyaw-thet-wam-71a0611a2"
-          >
-            <Linkedin size={24} />
-          </a>
-        </div>
-      </nav>
-      <aside>
-        <p>
-          Empowering Ideas, Building Futures | Kyaw Thet Wam © 2024 | Made with
-          Passion and Precision
-        </p>
-      </aside>
-    </footer>
-  );
+const storage = getStorage(
+  firebase.getApp(),
+  "gs://my-portfolio-9760a.appspot.com"
+);
+
+export async function getProjects() {
+  const [
+    accPhotos,
+    lz,
+    gate,
+    dict,
+    yc,
+    pos,
+    deli,
+    atmd,
+    luckyXd,
+    fu,
+    dover,
+    goldSell,
+    fuDashboardVd,
+    fuClientVd,
+  ] = await Promise.all([
+    getImageUrls("acc"),
+    getImageUrls("lz"),
+    getImageUrls("gate"),
+    getImageUrls("dict"),
+    getImageUrls("yc"),
+    getImageUrls("pos"),
+    getImageUrls("deli"),
+    getImageUrls("atmd"),
+    getImageUrls("luckyxd"),
+    getImageUrls("fu"),
+    getImageUrls("dover"),
+    getImageUrls("gold_sell"),
+    getDownloadURL(ref(storage, "videos/client.MP4/")),
+    getDownloadURL(ref(storage, "videos/dashboard.mp4/")),
+  ]);
+
+  return [
+    {
+      title: "E-commerce Dashboard",
+      image: fu[fu.length - 1],
+      description:
+        "Sales Analystics , Inventory Management, Customer Relationship Management,Order Fulfillment, Financial Reporting ,User-Friendly Interface , Customization Options.",
+      video: fuDashboardVd,
+    },
+    {
+      image: fu[0],
+      title: "E-commerce",
+      description:
+        "Jewellery ordering system containing manual payment,ordertracking, appointment booking and so on.",
+      video: fuClientVd,
+    },
+    {
+      image: lz[lz.length - 1],
+      title: "Lazy Learning",
+      description:
+        "A learning resource app for Myanmar K-12 high school students. Contains over 19 years of old question papers from 2002 to the latest 2020 Matriculation Exam.",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.lazydev.lazylearning",
+      photos: lz,
+    },
+    {
+      image: gate[gate.length - 1],
+      title: "Receipt system for Car Gate",
+      description:
+        "Managing parcel deliveries with this app, seamlessly recording customer information and generating instantreceipts for a smooth and efficient shipping experience.",
+      photos: gate,
+    },
+    {
+      image: dict[dict.length - 1],
+      title: "Dictionary",
+      description:
+        "Dive into the language world with this comprehensive dictionary app, offering dualUS and British pronunciations, all powered by a reliable open source SQLite database withoutinternet connection.",
+      photos: dict,
+    },
+    {
+      image: yc[yc.length - 1],
+      title: "YC Fitness",
+      description:
+        "Fitness app which is accessible by specific member levels including nutrition plan, workouts and water level. This app contains social media platform like facebook with chatting, video call and notifications.",
+
+      appStoreLink: "https://apps.apple.com/us/app/yc-fitness/id1666451656",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.yc_fitness&pli=1",
+      photos: yc,
+    },
+    {
+      image: accPhotos[accPhotos.length - 1],
+      title: "Finance",
+      description:
+        "User-friendly expense tracking app, allowing users to effortlessly record and categorize expenses,resulting in improved financial awareness.",
+      photos: accPhotos,
+    },
+    {
+      image: pos[0],
+      title: "New Empire POS (Web,Mobile)",
+      description:
+        "A cloud-based POS system into a retail environment, improving inventory management, and reducing checkouttimes",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.newempire.pos",
+      photos: pos,
+    },
+    {
+      image: deli[deli.length - 1],
+      title: "Logistic Management",
+      description:
+        "Customer can check his order, route information and so on. Employee app with different employee roles containing route order management,route management, driver managementfor different routes, scan methods for orders, print service with both receipts and barcode labels, expense, customers, and so on.",
+      photos: deli,
+    },
+    {
+      image: atmd[0],
+      title: "Aungthamardi - Customer",
+      description:
+        "Aung Thamardi Customer Application is dedicated forthe customers of Aung ThamardiGold&Jewellery shop for enhancing customer satisfaction.",
+      appStoreLink:
+        "https://apps.apple.com/us/app/aung-thamardi-customer/id6450292142",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=atmd.app.customer",
+      photos: atmd,
+    },
+    {
+      image: goldSell[0],
+      title: "Aungthamardi - Gold Sell",
+      description:
+        "Aung ThamardiGold Sale App is an internal used application to coverthe gems and jewelry selling processes for Aung Thamardi Employees.",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=atmd.app.goldsell",
+      photos: goldSell,
+    },
+    {
+      image: luckyXd[0],
+      title: "LuckyXD",
+      description:
+        "To streamline and optimize the operations of businesses involved in international trade and commerce",
+      photos: luckyXd,
+    },
+    {
+      image: dover[dover.length - 1],
+      title: "Dover",
+      description:
+        "Water management system from local water factory including daily sales across agents and factory, managing water bottles, income, expense and tracking water bottle based on customer.",
+      photos: dover,
+      webLink: "https://host-dover.web.app",
+    },
+  ];
 }
 
-export function SkillBadge({ skill }: { skill: string }) {
-  return (
-    <span className="inline-flex justify-center rounded-lg bg-sky-600 px-4 py-1 text-xs text-justify  font-medium text-white ring-1 ring-inset ring-blue-700/10">
-      {skill}
-    </span>
-  );
+export async function getImageUrls(folderName: string, type = "images") {
+  const listRef = ref(storage, `${type}/${folderName}/`);
+  const tmp: string[] = [];
+
+  const allRef = await listAll(listRef);
+  for (let index = 0; index < allRef.items.length; index++) {
+    const itemRef = allRef.items[index];
+    const url = await getDownloadURL(ref(storage, itemRef.fullPath));
+    tmp.push(url);
+  }
+
+  return tmp;
+}
+
+export async function getVideoUrls(folderName: string) {
+  return await getDownloadURL(ref(storage, "videos/client.MP4/"));
 }
