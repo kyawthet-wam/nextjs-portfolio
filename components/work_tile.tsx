@@ -1,5 +1,5 @@
 import { CheckCheck } from "lucide-react";
-import { Work } from "./definitions";
+import { Work } from "@/types/definitions";
 
 export function WorkTile({ work }: { work: Work }) {
   return (

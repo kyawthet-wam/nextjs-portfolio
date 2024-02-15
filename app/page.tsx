@@ -1,12 +1,12 @@
-import { projects, works, dover } from "./definitions";
-import { ProjectCard } from "./project_card";
-import { Footer } from "./footer";
-import { WorkTile } from "./work_tile";
-import { SkillBadge } from "./kkill_badge";
-import firebase from "./firebase_config";
+import { projects, works, dover } from "@/types/definitions";
+import { ProjectCard } from "@/components/project_card";
+import { Footer } from "@/components/footer";
+import { WorkTile } from "@/components/work_tile";
+import { SkillBadge } from "@/components/skill_badge";
+import firebase from "@/config/firebase_config";
 import { getDownloadURL, getStorage, listAll, ref } from "firebase/storage";
 import { Suspense } from "react";
-import { CardSkeleton, ProfileSkeleton } from "./skeleton";
+import { CardSkeleton, ProfileSkeleton } from "@/components/skeleton";
 
 export default function Home() {
   return (
@@ -84,7 +84,7 @@ export default function Home() {
             </div>
             <div className="pt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-sky-500 before:to-sky-400">
               {works.toReversed().map((work) => (
-                <WorkTile work={work} />
+                <WorkTile key={work.title} work={work} />
               ))}
             </div>
           </div>
@@ -119,7 +119,7 @@ export async function Projects() {
       </div>
       <div className="mx-10 my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((project) => (
-          <ProjectCard project={project} />
+          <ProjectCard key={project.title} project={project} />
         ))}
       </div>
     </div>

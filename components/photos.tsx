@@ -3,12 +3,20 @@
 import { BookImage } from "lucide-react";
 
 export function Photos({ photos }: { photos: string[] }) {
+
+    const showPhotos = (photos: string) => {
+        const show:any = document.getElementById(photos.toString()) as HTMLElement;
+
+        if(show) {
+            show.showModal();
+        } 
+    }
+    
   return (
     <>
       <button
-        key={photos.toString()}
         className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:bg-blue-200 hover:text-sky-600  rounded-sm space-x-2 h-2 items-center  text-sky-600 font-bold text-xs"
-        onClick={() => document.getElementById(photos.toString()).showModal()}
+        onClick={() => showPhotos(photos.toString())}
       >
         <BookImage size={16} />
         Photos

@@ -1,10 +1,10 @@
 import { FileVideo2, Link, LucideIcon, Play, Videotape } from "lucide-react";
-import { Project } from "./definitions";
+import { Project } from "@/types/definitions";
 import { Photos } from "./photos";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <div key={project.title} className="card shadow-xl">
+    <div className="card shadow-xl">
       <figure>
         <img src={project.image} alt="Image" />
       </figure>
@@ -16,7 +16,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.description}
         </div>
         <div className="card-actions flex items-center justify-start pt-2">
-          {project.photos == null ? null : <Photos photos={project.photos} />}
+          {project.photos == null ? null : <Photos key={project.photos.toString()} photos={project.photos} />}
           {project.video == null ? null : (
             <button className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:bg-blue-200 hover:text-sky-600  rounded-sm h-2 items-center  text-sky-600 font-bold text-xs">
               <FileVideo2 size={16} />
