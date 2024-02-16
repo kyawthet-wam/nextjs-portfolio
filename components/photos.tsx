@@ -11,6 +11,7 @@ export function Photos({ photos }: { photos: string[] }) {
         const show:any = document.getElementById(photos.toString()) as HTMLElement;
 
         if(show) {
+          setCurrent(0);
           show.showModal();
         } 
     }
