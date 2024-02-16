@@ -21,7 +21,7 @@ export default function Home() {
         <div className="relative text-sm text-slate-500 font-semibold pt-2">
           I am Kyaw Thet Wam, Mobile Developer from Mandalay, Myanmar.
         </div>
-        <div className="max-w-[80vh] text-justify text-slate-600 text-sm whitespace-normal py-8">
+        <div className="max-w-5xl text-justify text-slate-600 text-sm whitespace-normal py-8">
           Experienced mobile developer with a proven track record of creating
           polished cross-platform mobile applications using Flutter. With three
           plus years of hands-on experience, I am able to deliver high-quality,
@@ -90,6 +90,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-sky-600">
+        Projects
+      </div>
       <Suspense fallback={<CardSkeleton />}>
         <Projects />
       </Suspense>
@@ -104,7 +107,7 @@ export async function ProfileImage() {
       <img
         src={await getDownloadURL(ref(storage, "images/ktw/ktw-4.jpg/"))}
         alt="profile"
-        className="h-[300px] w-[300px] rounded-full object-cover"
+        className="h-[300px] w-[300px] rounded-full border border-white object-cover shadow-lg"
       />
     </div>
   );
@@ -114,9 +117,6 @@ export async function Projects() {
   const projects = await getProjects();
   return (
     <div>
-      <div className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-sky-600">
-        Projects
-      </div>
       <div className="mx-10 my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
