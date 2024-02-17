@@ -4,14 +4,13 @@ import { Photos } from "./photos";
 import { Video } from "./videos";
 
 export function ProjectCard({ project }: { project: Project }) {
-
   const showVideo = (video: string) => {
-    const show:any = document.getElementById(video) as HTMLElement;
+    const show: any = document.getElementById(video) as HTMLElement;
 
-        if(show) {
-          show.showModal();
-        }
-  }
+    if (show) {
+      show.showModal();
+    }
+  };
 
   return (
     <div className="card shadow-xl">
@@ -26,8 +25,20 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.description}
         </div>
         <div className="card-actions flex items-center justify-start pt-2">
-          {project.photos == null ? null : <Photos key={project.photos.toString()} photos={project.photos} />}
-          {project.video == null ? null : <Video key={project.video} video={project.video} />}
+          {project.photos == null ? null : (
+            <Photos
+              key={project.photos.toString()}
+              photos={project.photos}
+              projTitle={project.title}
+            />
+          )}
+          {project.video == null ? null : (
+            <Video
+              key={project.video}
+              video={project.video}
+              projTitle={project.title}
+            />
+          )}
           {/* {project.video == null ? null : (
             <button onClick={() => showVideo(project?.video)} className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:bg-blue-200 hover:text-sky-600  rounded-sm h-2 items-center  text-sky-600 font-bold text-xs">
               <FileVideo2 size={16} />
