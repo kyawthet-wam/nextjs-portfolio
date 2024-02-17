@@ -1,36 +1,67 @@
 "use client";
 
 import { BookImage } from "lucide-react";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 export function Photos({ photos }: { photos: string[] }) {
 
-    const [ current, setCurrent ] = useState<number>(0);
+    const [ openModal, setOpenModal ] = useState<boolean>(false);
 
     const showPhotos = (photos: string) => {
         const show:any = document.getElementById(photos.toString()) as HTMLElement;
 
         if(show) {
-          setCurrent(0);
+          setOpenModal(true);
           show.showModal();
         } 
     }
 
-    const prevBtn = () => {
-      if(current === 0) {
-        setCurrent(photos.length -1);
-      } else {
-        setCurrent(prev => prev - 1);
-      }
-    }
+    const closeModal = () => {
+      const show:any = document.getElementById(photos.toString()) as HTMLElement;
 
-    const nextBtn = () => {
-      if(current === photos.length -1) {
-        setCurrent(0);
-      } else {
-        setCurrent(prev => prev + 1);
+        if(show) {
+          setOpenModal(false);
+          show.close();
+        } 
+    } 
+
+    useEffect(() => {
+
+      const scrollContainers = document.querySelectorAll(".scroll-container") as NodeListOf<HTMLElement>; 
+      const imgContainer = document.querySelector(".img-container") as HTMLElement;
+      let width = imgContainer.clientWidth;
+      const prevBtns = document.querySelectorAll(".prevBtn") as NodeListOf<HTMLElement>;
+      const nextBtns = document.querySelectorAll(".nextBtn") as NodeListOf<HTMLElement>;
+
+      const handleResize = () => {
+        width = imgContainer.clientWidth;
       }
-    }
+
+      window.addEventListener('resize', handleResize);
+
+      prevBtns.forEach((prevBtn,index) => {
+        prevBtn.addEventListener("click", () => {
+          scrollContainers[index].style.scrollBehavior = "smooth";
+          scrollContainers[index].scrollLeft -= width;
+        })
+      })
+
+      scrollContainers.forEach((scrollContainer) => {
+       scrollContainer.scrollLeft = 0;
+      })
+      
+      nextBtns.forEach((nextBtn,index) => {
+        nextBtn.addEventListener("click", () => {
+          scrollContainers[index].style.scrollBehavior = "smooth";
+          scrollContainers[index].scrollLeft += width;
+        })
+      })
+
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      }
+    },[openModal]);
+
     
   return (
     <>
@@ -41,68 +72,39 @@ export function Photos({ photos }: { photos: string[] }) {
         <BookImage size={16} />
         Photos
       </button>
-        <dialog id={photos.toString()} className="modal">
-        <div className="modal-box w-11/12 max-w-5xl bg-gray-200 justify-center">
-          <h3 className="font-bold text-lg">Hello!</h3>
+      <dialog id={photos.toString()} className="modal">
+          <div className="modal-box w-11/12 max-w-5xl bg-gray-200 justify-center p-0">
 
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-            <div className="w-full">
-              <div className="sm:flex justify-center hidden">
-                <img
-                  src={photos[current]}
-                  alt="Image"
-                  className="h-[500px] object-center" 
-                />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-0 right-0 top-1/2">
-                    <span onClick={()=> prevBtn()} className="btn btn-ghost">
-                    ❮
-                    </span>
-                    <span onClick={()=> nextBtn()} className="btn btn-ghost">
-                    ❯
-                    </span>
-                  </div>
-              </div>
-              <div className="flex justify-center sm:hidden">
-                <div className="max-h-96 overflow-y-auto">
-                  {photos.map((photo, index) => (
-                    <div className="flex justify-center">
+            <div className="flex justify-between items-center w-full bg-white p-3">
+              <h3 className="font-bold text-lg">Hello!</h3>
+              <span onClick={() => closeModal()} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                ✕
+              </span>
+            </div>
+            <div className="w-full px-10">
+              <div className="scroll-container w-full flex overflow-x-scroll">
+                {photos.map((photo) => {
+                  return (  
+                    <div className="w-full flex-none img-container">
                       <img 
-                        key={index} 
-                        src={photo} 
-                        alt={`Image ${index + 1}`} 
-                        className="mb-5 h-[400px]" />
-                    </div>
-                  ))}
-                </div>
+                        src={photo}
+                        alt="Image"
+                        className="h-[500px] mx-auto"
+                      />
+                  </div>
+                  )
+                })}
+              </div>
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-0 right-0 top-1/2">
+                <span className="btn btn-ghost prevBtn">
+                  ❮
+                </span>
+                <span className="btn btn-ghost nextBtn">
+                  ❯
+                </span>
               </div>
             </div>
-            {/* <div className="carousel w-full">
-              {photos.map((photo) => (
-                 <div key={photo.toString()} className="flex custom-carousel-item relative w-full m-0 justify-center"  
-                 style={{
-                  transform: `${openModal ? "translateX(0)" : `translateX(-${xPos}%)`}`
-                  }}
-                 >
-                 <img
-                    src={photo}
-                    alt="Image"
-                    className="h-[500px] object-center"
-                    
-                  />
-                  <div className="absolute flex justify-between transform -translate-y-1/2 left-0 right-0 top-1/2">
-                    <span onClick={()=> prevBtn()} className="btn btn-ghost">
-                    ❮
-                    </span>
-                    <span onClick={()=> nextBtn()} className="btn btn-ghost">
-                    ❯
-                    </span>
-                  </div>
-              </div>
-               ))}
-            </div> */}
           </form>
         </div>
       </dialog>
