@@ -30,7 +30,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.video == null ? null : <Video key={project.video} title={project.title} video={project.video} />}
           {/* {project.video == null ? null : (
             <button onClick={() => showVideo(project?.video)} className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:bg-blue-200 hover:text-sky-600  rounded-sm h-2 items-center  text-sky-600 font-bold text-xs">
-              <FileVideo2 size={16} />
+              <FileVideo2 size={16} />a
               Video
             </button>
           )} */}
