@@ -5,17 +5,22 @@ import { WorkTile } from "@/components/work_tile";
 import { SkillBadge } from "@/components/skill_badge";
 import firebase from "@/config/firebase_config";
 import { getDownloadURL, getStorage, listAll, ref } from "firebase/storage";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { CardSkeleton, ProfileSkeleton } from "@/components/skeleton";
+import NavBar from "@/components/nav_bar";
 
 export default function Home() {
   return (
     <div>
+      <NavBar />
       <div className="m-10">
         <Suspense fallback={<ProfileSkeleton />}>
           <ProfileImage />
         </Suspense>
-        <div className="relative text-2xl text-black font-bold pt-10">
+        <div
+          id="about"
+          className="relative text-2xl text-black font-bold pt-10"
+        >
           About Me
         </div>
         <div className="relative text-sm text-slate-500 font-semibold pt-2">
@@ -35,7 +40,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <div className="flex flex-col md:col-span-1 lg:col-span-1 gap-12">
-            <div className="flex flex-col gap-2">
+            <div id="education" className="flex flex-col gap-2">
               <div className="relative text-md text-black font-semibold">
                 Education
               </div>
@@ -45,7 +50,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-flow-col md:grid-flow-row">
+          <div id="skills" className="grid grid-flow-col md:grid-flow-row">
             <div className="col-span-2 md:col-span-2 lg:col-span-4 gap-2 space-y-2">
               <div className="relative text-md text-black font-bold">
                 Skills
@@ -74,7 +79,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10">
+        <div
+          id="experience"
+          className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10"
+        >
           <div className="flex flex-col gap-2 pt-10">
             <div className="relative text-md text-black font-bold">
               Experience
@@ -90,7 +98,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-sky-600">
+      <div
+        id="projects"
+        className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-sky-600"
+      >
         Projects
       </div>
       <Suspense fallback={<CardSkeleton />}>

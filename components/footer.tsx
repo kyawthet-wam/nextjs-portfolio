@@ -2,7 +2,7 @@ import { Linkedin, Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+    <footer id="contacts" className="footer footer-center p-10 bg-base-200 text-base-content rounded">
       <nav>
         <div className="grid grid-flow-col gap-10">
           <a
