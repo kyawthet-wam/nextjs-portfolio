@@ -26,8 +26,8 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.description}
         </div>
         <div className="card-actions flex items-center justify-start pt-2">
-          {project.photos == null ? null : <Photos key={project.photos.toString()} photos={project.photos} />}
-          {project.video == null ? null : <Video key={project.video} video={project.video} />}
+          {project.photos == null ? null : <Photos key={project.photos.toString()} title={project.title} photos={project.photos} />}
+          {project.video == null ? null : <Video key={project.video} title={project.title} video={project.video} />}
           {/* {project.video == null ? null : (
             <button onClick={() => showVideo(project?.video)} className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:bg-blue-200 hover:text-sky-600  rounded-sm h-2 items-center  text-sky-600 font-bold text-xs">
               <FileVideo2 size={16} />
