@@ -11,7 +11,7 @@ export default function NavBar() {
       <div className="justify-between px-4  lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <div className="flex font-serif italic font-bold text-sky-600">
+            <div className="flex font-serif italic font-bold text-[#083f99]">
               @KTW
             </div>
             <div className="md:hidden">
@@ -22,7 +22,7 @@ export default function NavBar() {
                 {navbar ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-sky-600"
+                    className="w-6 h-6 text-[#083f99]"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -35,7 +35,7 @@ export default function NavBar() {
                 ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-sky-600"
+                    className="w-6 h-6 text-[#083f99]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -54,7 +54,7 @@ export default function NavBar() {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 text-sky-600 text-sm   ${
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 text-[#083f99] text-sm   ${
               navbar ? "block" : "hidden"
             }`}
           >

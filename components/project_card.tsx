@@ -67,7 +67,7 @@ function Platform({
   return (
     <a href={link} target="_blank">
       {link == null ? null : (
-        <div className="flex space-x-1 items-center text-sky-600 font-bold text-sm">
+        <div className="flex space-x-1 items-center text-[#083f99] font-bold text-sm">
           <Icon size={iconsize} />
           <div>{name}</div>
         </div>

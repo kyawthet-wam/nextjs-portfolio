@@ -27,7 +27,7 @@ export function Video({ video, title }: { video: string; title: string }) {
     <>
       <button
         onClick={() => showVideo(video)}
-        className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:text-gray-800 hover:bg-gray-200  rounded-sm h-2 items-center  text-sky-600 font-bold text-xs"
+        className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:text-gray-800 hover:bg-gray-200  rounded-sm h-2 items-center  text-[#083f99] font-bold text-xs"
       >
         <FileVideo2 size={16} />
         Video

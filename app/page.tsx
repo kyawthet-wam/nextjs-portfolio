@@ -90,7 +90,7 @@ export default function Home() {
             <div className="relative text-slate-500 font-semibold text-sm">
               I have 3+ years of experience in Software Development
             </div>
-            <div className="pt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-sky-500 before:to-sky-400">
+            <div className="pt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[#083f99] before:to-[#083f99]">
               {works.toReversed().map((work) => (
                 <WorkTile key={work.title} work={work} />
               ))}
@@ -100,7 +100,7 @@ export default function Home() {
       </div>
       <div
         id="projects"
-        className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-sky-600"
+        className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-[#083f99]"
       >
         Projects
       </div>

@@ -101,7 +101,7 @@ export function Photos({ photos, title }: { photos: string[]; title: string }) {
   return (
     <>
       <button
-        className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:text-gray-800 hover:bg-gray-200  rounded-sm space-x-2 h-2 items-center  text-sky-600 font-bold text-xs"
+        className="btn btn-sm btn-outline border-slate-300 hover:border-none hover:text-gray-800 hover:bg-gray-200  rounded-sm space-x-2 h-2 items-center  text-[#083f99] font-bold text-xs"
         onClick={() => showPhotos(photos.toString())}
       >
         <BookImage size={16} />
