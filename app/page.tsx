@@ -14,34 +14,38 @@ export default function Home() {
     <div>
       <NavBar />
       <div className="m-10">
-        <Suspense fallback={<ProfileSkeleton />}>
-          <ProfileImage />
-        </Suspense>
-        <div
-          id="about"
-          className="relative text-2xl text-black font-bold pt-10"
-        >
-          About Me
-        </div>
-        <div className="relative text-sm text-slate-500 font-semibold pt-2">
-          I am Kyaw Thet Wam, Mobile Developer from Mandalay, Myanmar.
-        </div>
-        <div className="max-w-5xl text-justify text-slate-600 text-sm whitespace-normal py-8">
-          Experienced mobile developer with a proven track record of creating
-          polished cross-platform mobile applications using Flutter. With three
-          plus years of hands-on experience, I am able to deliver high-quality,
-          performant apps for both iOS and Android. My focus on clean code,
-          efficient UI/UX design, and collaboration with cross-functional teams
-          has consistently contributed to successful project outcomes. My
-          dedication to staying updated with industry trends ensures I utilize
-          the latest tools and techniques. With a passion for crafting
-          exceptional user experiences, I am committed to contributing to your
-          mobile app projects' success.
+        <div className="flex">
+          <div className="mr-2 lg:col-span-2">
+            <div
+              id="about"
+              className="relative text-2xl text-[#083f99] font-bold pt-10"
+            >
+              About Me
+            </div>
+            <div className="relative text-sm text-slate-500 font-semibold pt-2">
+              I am Kyaw Thet Wam, Mobile Developer from Mandalay, Myanmar.
+            </div>
+            <div className="max-w-5xl text-justify text-slate-600 text-sm whitespace-normal py-8">
+              Experienced mobile developer with a proven track record of
+              creating polished cross-platform mobile applications using
+              Flutter. With three plus years of hands-on experience, I am able
+              to deliver high-quality, performant apps for both iOS and Android.
+              My focus on clean code, efficient UI/UX design, and collaboration
+              with cross-functional teams has consistently contributed to
+              successful project outcomes. My dedication to staying updated with
+              industry trends ensures I utilize the latest tools and techniques.
+              With a passion for crafting exceptional user experiences, I am
+              committed to contributing to your mobile app projects' success.
+            </div>
+          </div>
+          <Suspense fallback={<ProfileSkeleton />}>
+            <ProfileImage />
+          </Suspense>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <div className="flex flex-col md:col-span-1 lg:col-span-1 gap-12">
             <div id="education" className="flex flex-col gap-2">
-              <div className="relative text-md text-black font-semibold">
+              <div className="relative text-xl text-[#083f99] font-semibold">
                 Education
               </div>
               <div className="relative text-slate-500 font-semibold text-sm">
@@ -52,7 +56,7 @@ export default function Home() {
           </div>
           <div id="skills" className="grid grid-flow-col md:grid-flow-row">
             <div className="col-span-2 md:col-span-2 lg:col-span-4 gap-2 space-y-2">
-              <div className="relative text-md text-black font-bold">
+              <div className="relative text-xl text-[#083f99] font-bold">
                 Skills
               </div>
               <div className="flex flex-row gap-2">
@@ -60,22 +64,24 @@ export default function Home() {
                 <SkillBadge skill="Dart" />
                 <SkillBadge skill="Java" />
                 <SkillBadge skill="Python" />
+                <SkillBadge skill="NextJs" />
               </div>
               <div className="flex flex-row gap-2">
-                <SkillBadge skill="NextJs" />
                 <SkillBadge skill="Firebase" />
                 <SkillBadge skill="Html" />
                 <SkillBadge skill="CSS" />
-              </div>
-              <div className="flex flex-row gap-2">
                 <SkillBadge skill="SQlite" />
                 <SkillBadge skill="Git" />
-                <SkillBadge skill="Problem Solving" />
               </div>
               <div className="flex flex-row gap-2">
+                <SkillBadge skill="Problem Solving" />
                 <SkillBadge skill="Communication" />
                 <SkillBadge skill="Teamwork" />
               </div>
+              {/* <div className="flex flex-row gap-2">
+                <SkillBadge skill="Communication" />
+                <SkillBadge skill="Teamwork" />
+              </div> */}
             </div>
           </div>
         </div>
@@ -84,7 +90,7 @@ export default function Home() {
           className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10"
         >
           <div className="flex flex-col gap-2 pt-10">
-            <div className="relative text-md text-black font-bold">
+            <div className="relative text-xl text-[#083f99] font-bold">
               Experience
             </div>
             <div className="relative text-slate-500 font-semibold text-sm">

@@ -5,7 +5,7 @@ export function WorkTile({ work }: { work: Work }) {
   return (
     <div
       key={work.duration}
-      className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+      className="relative flex items-center justify-between md:justify-normal min-w-28 md:odd:flex-row-reverse group is-active"
     >
       <div className="flex items-center shadow-lg justify-center w-10 h-10 space-y-20 rounded-full border border-white bg-[#083f99] group-[.is-active]:bg-[#083f99] text-[#083f99] group-[.is-active]:text-emerald-50 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
         <ArrowBigUp size={16} color="#f4f4f4" />
@@ -15,7 +15,7 @@ export function WorkTile({ work }: { work: Work }) {
           <div className="font-bold text-sm text-start text-slate-900">
             {work.title}
           </div>
-          <time className="font-sans text-xs font-semibold text-[#083f99]">
+          <time className="font-sans text-xs font-semibold text-[#083f99] whitespace-nowrap">
             {work.duration}
           </time>
         </div>
