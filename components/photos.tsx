@@ -11,11 +11,15 @@ export function Photos({ photos, title }: { photos: string[]; title: string }) {
 
   const delayState = useDebounce(scrollState, 300);
 
+  console.log("containerWidth", containerWidth);
+  console.log("scrollState",scrollState);
+  console.log("delayState", delayState);
+
   const calculateCurrent = useMemo(() => {
     if (delayState === 0) {
       setCurrent(1);
     } else {
-      setCurrent(Math.ceil(delayState / containerWidth) + 1);
+      setCurrent(Math.round(delayState / containerWidth) + 1);
     }
   }, [delayState]);
 
