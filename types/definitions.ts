@@ -175,3 +175,34 @@ export type Work = {
     },
   ];
   
+  export type Navbar = {
+    href: string,
+    title: string;
+  };
+
+  export const navbars = [
+    {
+      href: "#about",
+      title: "About"
+    },
+    {
+      href: "#education",
+      title: "Education"
+    },
+    {
+      href: "#skills",
+      title: "Skills"
+    },
+    {
+      href: "#experiences",
+      title: "Experiences"
+    },
+    {
+      href: "#projects",
+      title: "Projects"
+    },
+    {
+      href: "#contacts",
+      title: "Contacts"
+    }
+  ]

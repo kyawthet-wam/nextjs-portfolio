@@ -11,10 +11,6 @@ export function Photos({ photos, title }: { photos: string[]; title: string }) {
 
   const delayState = useDebounce(scrollState, 300);
 
-  console.log("containerWidth", containerWidth);
-  console.log("scrollState",scrollState);
-  console.log("delayState", delayState);
-
   const calculateCurrent = useMemo(() => {
     if (delayState === 0) {
       setCurrent(1);
@@ -126,16 +122,16 @@ export function Photos({ photos, title }: { photos: string[]; title: string }) {
               <div className="scroll-container snap-mandatory snap-x w-full flex overflow-x-scroll">
                 {photos.map((photo, index) => {
                   return (
-                    <div
-                      key={index}
-                      className="w-full snap-center flex-none img-container"
-                    >
-                      <img
-                        src={photo}
-                        alt="Image"
-                        className="h-[500px] mx-auto"
-                      />
-                    </div>
+                      <div
+                        key={index}
+                        className="w-full snap-center flex-none img-container h-[500px]"
+                      >
+                        <img
+                          src={photo}
+                          alt="Image"
+                          className="m-auto h-[500px] object-contain"
+                        />
+                      </div>
                   );
                 })}
               </div>
