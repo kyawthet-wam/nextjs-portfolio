@@ -67,7 +67,8 @@ export default function Home() {
               successful project outcomes. My dedication to staying updated with
               industry trends ensures I utilize the latest tools and techniques.
               With a passion for crafting exceptional user experiences, I am
-              committed to contributing to your mobile app projects' success.
+              committed to contributing to your mobile app projects`&apos;`
+              success.
             </div>
           </div>
           <div className="mx-auto">
