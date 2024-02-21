@@ -6,4 +6,4 @@ const nextConfig = {
   transpilePackages: ['lucide-react'] 
 };
 
-module.exports = {nextConfig};
+module.exports = nextConfig;
