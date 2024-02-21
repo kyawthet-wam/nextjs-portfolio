@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export",  // <=== enables static exports
+  output: "export",  // <=== enables static exports
   reactStrictMode: true,
   basePath: "/nextjs-dashboard",
-    transpilePackages: ['lucide-react'] 
+  transpilePackages: ['lucide-react'] 
 };
 
-export default nextConfig;
+module.exports = {nextConfig};
