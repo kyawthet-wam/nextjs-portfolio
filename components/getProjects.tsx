@@ -40,21 +40,21 @@ export async function getProjects() {
       title: "E-commerce Dashboard",
       image: fu[fu.length - 1],
       description:
-        "Sales Analystics , Inventory Management, Customer Relationship Management,Order Fulfillment, Financial Reporting ,User-Friendly Interface , Customization Options.",
+        "Key features include sales analytics, inventory management, customer relationship management, order fulfillment, financial reporting, a user-friendly interface, and customization options.",
       video: fuDashboardVd,
     },
     {
       image: fu[0],
       title: "E-commerce",
       description:
-        "Jewellery ordering system containing manual payment,ordertracking, appointment booking and so on.",
+        "The jewelry ordering system includes features such as manual payment processing, order tracking, appointment booking, and more.",
       video: fuClientVd,
     },
     {
       image: lz[lz.length - 1],
       title: "Lazy Learning",
       description:
-        "A learning resource app for Myanmar K-12 high school students. Contains over 19 years of old question papers from 2002 to the latest 2020 Matriculation Exam.",
+        "The educational app tailored for Myanmar K-12 high school students provides a comprehensive repository of past question papers, covering the period from 2002 to the latest 2020 Matriculation Exam.",
       playStoreLink:
         "https://play.google.com/store/apps/details?id=com.lazydev.lazylearning",
       photos: lz,
@@ -63,21 +63,21 @@ export async function getProjects() {
       image: gate[gate.length - 1],
       title: "Receipt system for Car Gate",
       description:
-        "Managing parcel deliveries with this app, seamlessly recording customer information and generating instantreceipts for a smooth and efficient shipping experience.",
+        "Efficiently manage parcel deliveries with this app, seamlessly recording customer details and generating instant receipts for a smoother shipping experience.",
       photos: gate,
     },
     {
       image: dict[dict.length - 1],
       title: "Dictionary",
       description:
-        "Dive into the language world with this comprehensive dictionary app, offering dualUS and British pronunciations, all powered by a reliable open source SQLite database withoutinternet connection.",
+        "Dive into the language world with this comprehensive dictionary app, offering dual US and British pronunciations, all powered by a reliable open source SQLite database without internet connection.",
       photos: dict,
     },
     {
       image: yc[yc.length - 1],
       title: "YC Fitness",
       description:
-        "Fitness app which is accessible by specific member levels including nutrition plan, workouts and water level. This app contains social media platform like facebook with chatting, video call and notifications.",
+        "Unlock personalized member levels featuring tailored nutrition plans, workout routines, and hydration tracking. Seamlessly integrated with top social media platforms like Facebook, enjoy chatting, video calls, and instant notifications for an enriched experience.",
 
       appStoreLink: "https://apps.apple.com/us/app/yc-fitness/id1666451656",
       playStoreLink:
@@ -88,14 +88,14 @@ export async function getProjects() {
       image: accPhotos[accPhotos.length - 1],
       title: "Finance",
       description:
-        "User-friendly expense tracking app, allowing users to effortlessly record and categorize expenses,resulting in improved financial awareness.",
+        "Experience a user-friendly expense tracking app designed for effortless management. Record and categorize expenses seamlessly to enhance financial awareness and control.",
       photos: accPhotos,
     },
     {
       image: pos[0],
       title: "New Empire POS (Web,Mobile)",
       description:
-        "A cloud-based POS system into a retail environment, improving inventory management, and reducing checkouttimes",
+        "Cloud-based POS system for retail environment to enhance inventory management and streamline checkout processes, reducing waiting times for customers.",
       playStoreLink:
         "https://play.google.com/store/apps/details?id=com.newempire.pos",
       photos: pos,
@@ -104,14 +104,14 @@ export async function getProjects() {
       image: deli[deli.length - 1],
       title: "Logistic Management",
       description:
-        "Customer can check his order, route information and so on. Employee app with different employee roles containing route order management,route management, driver managementfor different routes, scan methods for orders, print service with both receipts and barcode labels, expense, customers, and so on.",
+        "Checking orders and receiving real-time updates of route information for orders are available on the client app. Meanwhile, the employee app offers various roles for managing different aspects, including route order management, route management, driver assignments for different routes, scanning methods for orders, printing services for receipts and barcode labels, expense tracking, customer management, and more.",
       photos: deli,
     },
     {
       image: atmd[0],
       title: "Aungthamardi - Customer",
       description:
-        "Aung Thamardi Customer Application is dedicated forthe customers of Aung ThamardiGold&Jewellery shop for enhancing customer satisfaction.",
+        "The Aung Thamardi Customer Application is designed exclusively for customers of Aung Thamardi Gold & Jewellery shop, aimed at enhancing customer satisfaction.",
       appStoreLink:
         "https://apps.apple.com/us/app/aung-thamardi-customer/id6450292142",
       playStoreLink:
@@ -122,7 +122,7 @@ export async function getProjects() {
       image: goldSell[0],
       title: "Aungthamardi - Gold Sell",
       description:
-        "Aung ThamardiGold Sale App is an internal used application to coverthe gems and jewelry selling processes for Aung Thamardi Employees.",
+        "The Aung ThamardiGold Sale App is an internal application used by Aung Thamardi employees to facilitate the selling processes for gems and jewelry.",
       playStoreLink:
         "https://play.google.com/store/apps/details?id=atmd.app.goldsell",
       photos: goldSell,
@@ -133,6 +133,7 @@ export async function getProjects() {
       description:
         "To streamline and optimize the operations of businesses involved in international trade and commerce",
       photos: luckyXd,
+      appStoreLink: "https://apps.apple.com/us/app/lucky-xd/id6475064267",
     },
     {
       image: dover[dover.length - 1],
