@@ -10,7 +10,7 @@ import { Projects } from "../components/projects";
 
 export default function Home() {
   return (
-    <div>
+    <div className="w-full">
       <NavBar />
       <div className="m-10">
         {/* laptop size */}
@@ -25,7 +25,7 @@ export default function Home() {
             <div className="relative text-sm text-slate-500 font-semibold pt-2">
               I am Kyaw Thet Wam, Mobile Developer from Mandalay, Myanmar.
             </div>
-            <div className="max-w-5xl text-justify text-slate-600 text-sm whitespace-normal py-8">
+            <div className="max-w-5xl text-jusitfy text-slate-600 text-sm whitespace-normal py-8">
               Experienced mobile developer with a proven track record of
               creating polished cross-platform mobile applications using
               Flutter. With three plus years of hands-on experience, I am able
@@ -68,8 +68,7 @@ export default function Home() {
               successful project outcomes. My dedication to staying updated with
               industry trends ensures I utilize the latest tools and techniques.
               With a passion for crafting exceptional user experiences, I am
-              committed to contributing to your mobile app projects`&apos;`
-              success.
+              committed to contributing to your mobile app projects&apos; success.
             </div>
           </div>
           <div className="mx-auto">
@@ -91,7 +90,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div id="skills" className="grid grid-flow-col md:grid-flow-row">
+
+          <div id="skills" className="grid sm:grid-flow-col md:grid-flow-row">
             <div className="col-span-2 md:col-span-2 lg:col-span-4 gap-2 space-y-2">
               <div className="relative text-xl text-[#083f99] font-bold">
                 Skills
@@ -122,6 +122,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+
         <div
           id="experiences"
           className="grid grid-cols-1 lg:grid-cols-[60%_80%] xl:grid-cols-2 gap-10"
@@ -141,6 +142,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div
         id="projects"
         className="mx-0 p-1 text-center text-white font-sans font-bold text-lg bg-[#083f99]"

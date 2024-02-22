@@ -7,15 +7,17 @@
   background-color: rgb(245, 246, 250);
   /* --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255; */
+  /* background-color: red; */
+  width: 100%;
+}
+
+html,body {
+  @apply w-full
 }
 
 @media (prefers-color-scheme: system) {
   :root {
   }
-}
-
-body {
-  /* color: rgb(var(--foreground-rgb)); */
 }
 
 @layer utilities {
